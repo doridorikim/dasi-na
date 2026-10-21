@@ -1,0 +1,26 @@
+/* 1. 기본 스타일 초기화 및 박스사이징 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. 전체 기본 글꼴 및 본문 설정 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* 3. 레이아웃 간격 유지를 위한 기본 여백 설정 (선택 사항) */
+header, nav, main, footer {
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+section {
+    padding: 40px 20px;
+    border-bottom: 1px solid #eee;
+}
