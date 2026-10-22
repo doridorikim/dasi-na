@@ -1,26 +1,9 @@
-/* 1. 기본 스타일 초기화 및 박스사이징 설정 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* =========================================
+   다시, 나 - 스타일 파일
+   1일차: 구글 글꼴만 적용 (디자인은 2일차)
+   ========================================= */
 
-/* 2. 전체 기본 글꼴 및 본문 설정 */
+/* 페이지 전체에 Noto Sans KR 글꼴 적용 */
 body {
-    font-family: 'Noto Sans KR', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-}
-
-/* 3. 레이아웃 간격 유지를 위한 기본 여백 설정 (선택 사항) */
-header, nav, main, footer {
-    padding: 20px;
-    margin-bottom: 10px;
-    background-color: #fff;
-}
-
-section {
-    padding: 40px 20px;
-    border-bottom: 1px solid #eee;
+  font-family: 'Noto Sans KR', sans-serif;
 }
