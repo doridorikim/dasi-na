@@ -1,9 +1,287 @@
 /* =========================================
-   다시, 나 - 스타일 파일
-   1일차: 구글 글꼴만 적용 (디자인은 2일차)
+   1. 색상 변수 설정 (:root)
    ========================================= */
+:root {
+  --primary-color: #1E2A38;   /* 대표색: 다크 네이비 */
+  --accent-color: #4F46E5;    /* 강조색: 소프트 인디고 블루 */
+  --text-color: #333333;      /* 글자색: 다크 그레이 */
+  --bg-color: #F8F9FA;        /* 배경색: 라이트 그레이 */
+  --card-bg: #FFFFFF;         /* 카드 배경색: 흰색 */
+  --border-color: #E5E7EB;    /* 경계선 색상 */
+}
 
-/* 페이지 전체에 Noto Sans KR 글꼴 적용 */
+/* =========================================
+   2. 초기화 및 기본 스타일
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* [위치 수정] 고정 헤더 높이(약 90px) + 여유 공간(15px)을 고려한 스크롤 패딩 값 조정 */
+html {
+  scroll-padding-top: 105px; 
+}
+
 body {
   font-family: 'Noto Sans KR', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* =========================================
+   3. 상단 헤더 및 네비게이션 (고정 및 Flexbox)
+   ========================================= */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+  padding: 12px 15px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Flexbox를 사용한 네비게이션 메뉴 정렬 */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+nav ul li a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+/* 메뉴에 마우스 올렸을 때 버튼 효과 */
+nav ul li a:hover {
+  background-color: var(--accent-color);
+}
+
+/* =========================================
+   4. 본문 영역 레이아웃 (Grid 및 스타일)
+   ========================================= */
+main {
+  max-width: 100%;
+  padding: 105px 15px 20px 15px; /* 고정 헤더 아래부터 본문 시작하도록 맞춤 */
+}
+
+section {
+  background-color: var(--card-bg);
+  padding: 25px 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* 각 섹션 제목 아래 강조색 짧은 밑줄 */
+section h2 {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  position: relative;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 3px;
+  background-color: var(--accent-color);
+}
+
+/* 4-1. Grid를 사용한 소개 영역 (#about) */
+#about {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  gap: 15px;
+}
+
+/* 프로필 사진 원형 처리 */
+#about img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-color);
+}
+
+#about h2 {
+  margin-bottom: 5px;
+}
+
+#about h2::after {
+  left: 50%;
+  transform: translateX(-50%); /* 가운데 정렬에 맞춘 밑줄 */
+}
+
+/* 4-2. Grid를 사용한 경력 영역 (#career - 카드 모양) */
+#career {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+#career article {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+#career article h3 {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+#career article p {
+  font-size: 0.9rem;
+  color: #555555;
+}
+
+/* 4-3. 역량 및 교육·자격 목록 스타일 */
+#skills ul, #education ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+#skills li, #education li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* 4-4. 문의 영역 스타일 */
+#contact p {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+#contact img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* =========================================
+   5. 하단 푸터 영역
+   ========================================= */
+footer {
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+}
+
+/* =========================================
+   6. 반응형 디자인 (미디어쿼리)
+   ========================================= */
+
+/* -----------------------------------------
+   6-1. 태블릿 화면 이상 (min-width: 768px)
+   ----------------------------------------- */
+@media screen and (min-width: 768px) {
+  /* 상단 헤더: 사이트 이름 왼쪽, 메뉴 오른쪽 배치 (Flexbox 활용) */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+  }
+
+  header h1 {
+    margin-bottom: 0;
+    font-size: 1.5rem;
+  }
+
+  nav ul {
+    gap: 15px;
+  }
+
+  nav ul li a {
+    font-size: 0.95rem;
+    padding: 8px 14px;
+  }
+
+  /* 본문 상단 여백 재조정 */
+  main {
+    padding: 110px 30px 30px 30px;
+  }
+
+  /* 소개 영역(#about): 사진 왼쪽, 글 오른쪽 배치 (Grid 활용) */
+  #about {
+    grid-template-columns: 200px 1fr;
+    justify-items: start;
+    text-align: left;
+    gap: 30px;
+    align-items: center;
+  }
+
+  #about h2::after {
+    left: 0;
+    transform: none; /* 밑줄 왼쪽 정렬 복구 */
+  }
+
+  /* 경력 카드 영역(#career): 2열 배치 */
+  #career {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 역량 및 교육·자격 목록: 2열 배치 */
+  #skills ul, #education ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    list-style-position: inside;
+  }
+}
+
+/* -----------------------------------------
+   6-2. PC 화면 이상 (min-width: 1024px)
+   ----------------------------------------- */
+@media screen and (min-width: 1024px) {
+  /* 본문 최대 너비 제한 및 중앙 정렬 */
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 120px 20px 40px 20px;
+  }
+
+  /* PC 화면: 프로필 사진과 이름을 더 크게 강조 */
+  #about img {
+    width: 220px;
+    height: 220px;
+  }
+
+  #about h2 {
+    font-size: 1.75rem;
+  }
+
+  #about p {
+    font-size: 1.1rem;
+  }
 }
